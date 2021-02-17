@@ -5,6 +5,7 @@ let dep = 2;
 class Board {
     constructor() {
         this.game = new Game();
+        this.undoTimes = 2;
         document.querySelector(".big").addEventListener("click", e => {
             var target = e.target;
             if (target.matches(".Oavl") || target.matches(".Xavl"))
@@ -62,11 +63,7 @@ class Board {
         this.updateScreen();
     }
     undo() {
-        var rep_times;
-        if (Player1 && Player2) rep_times = 0;
-        else if (Player2 || Player2) rep_times = 2;
-        else rep_times = 1;
-        for (let i = 0; i < rep_times; ++i) {
+        for (let i = 0; i < this.undoTimes; ++i) {
             if (!this.game.history.length) break;
             var idx = this.game.history[this.game.history.length - 1];
             var big_change = this.game.undo();
@@ -123,9 +120,9 @@ document.querySelector("#undo").onclick = function(e) { board.undo(); };
 document.querySelector("#reset").onclick = function(e) { board.reset(); };
 document.querySelector("select").onchange = function(e) {
     var choice = e.target.value;
-    if (choice === "pvp") setEventListener(false, false);
-    else if (choice === "pvc") setEventListener(false, true);
-    else if (choice === "cvp") setEventListener(true, false);
+    if (choice === "pvp") setEventListener(false, false), board.undoTimes = 1;
+    else if (choice === "pvc") setEventListener(false, true), board.undoTimes = 2;
+    else if (choice === "cvp") setEventListener(true, false), board.undoTimes = 2;
     else if (choice === "cvc") setEventListener(true, true);
 };
 setEventListener();
