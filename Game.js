@@ -56,8 +56,6 @@ class Game {
         if (res)
             this.big.move(idx[0], this.cur_player);
         this.history.push(idx);
-        console.log(idx + ':');
-        console.log([...this.valid_moves()]);
         return res;
     }
     undo() {
@@ -128,7 +126,7 @@ class Player {
         var best_score = Number.NEGATIVE_INFINITY;
         for (let i of game.valid_moves()) {
             let score = this.get_rating(game, i, dep);
-            if (score - best_score > Number.EPSILON)
+            if (!best || score - best_score > Number.EPSILON)
                 best_score = score, best = i;
         }
         return best;

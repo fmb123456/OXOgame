@@ -1,11 +1,20 @@
-* {
-    font-family: sans-serif;
+.bg {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-image: url("oil2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #top {
     position: relative;
     text-align: center;
     font-size: xxx-large;
+    font-family: sans-serif;
+    text-shadow: -1px -1px 0 white, 1px -1px white, -1px 1px 0 white, 1px 1px 0 white, 2px 2px 2px black;
 }
 
 #top.O::after {
@@ -38,6 +47,8 @@
     top: 5%;
     left: 5%;
     text-align: left;
+    font-family: sans-serif;
+    text-shadow: -1px -1px 0 white, 1px -1px white, -1px 1px 0 white, 1px 1px 0 white, 2px 2px 2px black;
 }
 
 #history>div {
@@ -68,6 +79,7 @@ table {
 }
 
 .big {
+    background: white;
     position: absolute;
     height: 500px;
     width: 500px;

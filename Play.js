@@ -1,6 +1,7 @@
 let Player1 = "0.139280 0.186330 0.674389 0.558114 0.441886 0.259011 0.740989 0.468401 0.531599";
 let Player2 = "0.139280 0.186330 0.674389 0.558114 0.441886 0.259011 0.740989 0.468401 0.531599";
 let dep = 2;
+let imgNumber = 2;
 //use "random" to get a random AI
 class Board {
     constructor() {
@@ -19,7 +20,6 @@ class Board {
         }
     }
     move(target) {
-        console.log("----------------------\n------------------------\n-----------------------");
         var idx = target.idx;
         var p;
         if (target.matches(".Oavl"))
@@ -83,9 +83,11 @@ class Board {
         document.querySelector("#history").appendChild(node);
     }
 }
-var board = new Board();
+let board = new Board();
 let p1 = new Player(Player1);
 let p2 = new Player(Player2);
+let bg = document.querySelector(".bg");
+bg.style.backgroundImage = `url('oil${Math.floor(Math.random() * imgNumber) + 1}.jpg')`;
 
 function p1Check() {
     if (!board.game.finish && board.game.cur_player === 1) {
