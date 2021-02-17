@@ -87,7 +87,7 @@ let board = new Board();
 let p1 = new Player(Player1);
 let p2 = new Player(Player2);
 let bg = document.querySelector(".bg");
-bg.style.backgroundImage = `url('oil${Math.floor(Math.random() * imgNumber) + 1}.jpg')`;
+bg.style.backgroundImage = `url('images/oil${Math.floor(Math.random() * imgNumber) + 1}.jpg')`;
 
 function p1Check() {
     if (!board.game.finish && board.game.cur_player === 1) {
