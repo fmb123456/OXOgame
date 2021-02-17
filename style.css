@@ -1,0 +1,142 @@
+* {
+    font-family: sans-serif;
+}
+
+#top {
+    position: relative;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+#top.O::after {
+    color: red;
+    content: "O's turn";
+}
+
+#top.X::after {
+    color: blue;
+    content: "X's turn";
+}
+
+#top.Owin::after {
+    color: red;
+    content: "O Win";
+}
+
+#top.Xwin::after {
+    color: blue;
+    content: "X Win";
+}
+
+#top.draw::after {
+    color: rgb(192, 0, 192);
+    content: "Draw";
+}
+
+#history {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    text-align: left;
+}
+
+#history>div {
+    font-size: xxx-large;
+}
+
+#history>p {
+    line-height: 0px;
+    font-size: medium;
+}
+
+#options {
+    position: absolute;
+    left: 75%;
+}
+
+select {
+    font-size: x-large;
+}
+
+button {
+    font-size: x-large;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.big {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+}
+
+.small {
+    height: 100%;
+    width: 100%;
+    border: 3px solid black;
+}
+
+.big>tbody>tr>td {
+    border: 5px solid black;
+}
+
+.small>tbody>tr>td {
+    border: 2px solid black;
+}
+
+.grid {
+    height: 1em;
+    width: 1em;
+    text-align: center;
+    font-size: 3em;
+}
+
+.grid.O::after {
+    content: 'O';
+    color: red;
+}
+
+.grid.X::after {
+    content: 'X';
+    color: blue;
+}
+
+.grid:hover:not(.Oavl):not(.Xavl) {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.grid.Oavl {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.grid.Oavl:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.grid.Xavl {
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+.grid.Xavl:hover {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+.small.O {
+    height: 100%;
+    width: 100%;
+    border: 3px solid red;
+    background-color: pink;
+}
+
+.small.X {
+    height: 100%;
+    width: 100%;
+    border: 3px solid blue;
+    background-color: lightskyblue;
+}
