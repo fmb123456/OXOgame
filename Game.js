@@ -133,7 +133,7 @@ class Player {
     }
     get_small_attack_rating(game, idx, p) {
         if (game.small[idx].finish)
-            return game.big[idx] === p ? this.occupy : 0;
+            return game.small[idx].winner === p ? this.occupy : 0;
         var ready = Array.from({ length: 9 }, () => false);
         for (let line of lines) {
             line = line.filter(i => game.state([idx, i]) !== p);
@@ -180,7 +180,7 @@ class Player {
         var all_line = [];
         var ready = Array.from({ length: 9 }, () => false);
         for (let line of lines) {
-            line = line.filter(i => game.big[i] !== p);
+            line = line.filter(i => game.small[i].winner !== p);
             if (line.length === 1 && !game.small[line[0]].finish && !ready[line[0]]) {
                 ready[line[0]] = true;
                 ready_score += this.alpha ** small_rating[line[0]];
