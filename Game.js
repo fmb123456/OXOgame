@@ -149,7 +149,7 @@ class Player {
             if (line.some(i => game.state([idx, i]) === -p))
                 all_line.push(0);
             else
-                all_line.push(this.line_cnt[line.filter(i => i === p).length]);
+                all_line.push(this.line_cnt[line.filter(i => game.state([idx, i]) === p).length]);
         }
         if (all_line.length) {
             all_line.sort((i, j) => j - i);
@@ -191,7 +191,7 @@ class Player {
                 continue;
             if (line.some(i => game.small[i].winner !== p && game.small[i].finish))
                 all_line.push(0);
-            else all_line.push(this.alpha ** (line.reduce((s, i) => s + small_rating[i]) / 3));
+            else all_line.push(this.alpha ** (line.map(i => small_rating[i]).reduce((s, i) => s + i) / 3));
         }
         if (all_line.length) {
             all_line.sort((i, j) => j - i);
