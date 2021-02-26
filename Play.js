@@ -1,7 +1,12 @@
-let Player1 = "0.1701104454 0.2538713120 0.3708350128 0.6028518572 1.8858873041 0.1877097248 0.4618886377 0.8376597179 1.6070491037";
-let Player2 = "0.1701104454 0.2538713120 0.3708350128 0.6028518572 1.8858873041 0.1877097248 0.4618886377 0.8376597179 1.6070491037";
+let Player1 = "0.0369003608 0.0559764671 0.7294386995 0.8701294408 1.0970368063 0.4474118099 0.3929972732 0.4789892354 1.4499301512";
+let Player2 = "0.3713930932 0.6460068626 0.7495216064 0.8106097537 1.4931097118 0.5777620002 0.4815393739 0.9487331781 1.3112141286";
 let dep = 3;
-let imgNumber = 2;
+let img = [
+    "oil1.jpg",
+    "oil2.jpg",
+    "oil3.png",
+    "oil4.jpg"
+];
 //use "random" to get a random AI
 class Board {
     constructor() {
@@ -87,7 +92,7 @@ let board = new Board();
 let p1 = new Player(Player1);
 let p2 = new Player(Player2);
 let bg = document.querySelector(".bg");
-bg.style.backgroundImage = `url('images/oil${Math.floor(Math.random() * imgNumber) + 1}.jpg')`;
+bg.style.backgroundImage = `url(images/${img[Math.floor(Math.random() * img.length)]})`;
 
 function p1Check() {
     if (!board.game.finish && board.game.cur_player === 1) {
