@@ -1,21 +1,37 @@
 let Player1 = "0.0369003608 0.0559764671 0.7294386995 0.8701294408 1.0970368063 0.4474118099 0.3929972732 0.4789892354 1.4499301512";
-let Player2 = "0.3713930932 0.6460068626 0.7495216064 0.8106097537 1.4931097118 0.5777620002 0.4815393739 0.9487331781 1.3112141286";
+let Player2 = "0.3713930932 0.6460068626 0.7495216064 0.8106097537 1.1584612870 0.5777620002 0.4815393739 0.6827718454 1.3112141286";
+//use "random" to get a random AI
 let dep = 3;
 let img = [
-    "oil1.jpg",
-    "oil2.jpg",
-    "oil3.png",
-    "oil4.jpg"
+    "oil1.jpg", //https://www.pixiv.net/artworks/80520328
+    "oil2.jpg", //https://www.pixiv.net/artworks/18231910
+    "oil3.jpg", //https://www.youtube.com/watch?v=2l_6oIGTrbg
+    "oil4.jpg", //https://www.pixiv.net/artworks/87658338
+    "oil5.jpg", //https://twitter.com/momomomomiZ/status/1363547464033308673/photo/1
+    "oil6.jpg", //https://twitter.com/pkpk44/status/1363437351372877825/photo/1
+    "oil7.jpg", //https://www.pixiv.net/artworks/87991921
+    "oil8.jpg", //https://www.pinterest.ru/pin/611293349404059174/
+    "oil9.jpg", //https://www.pixiv.net/artworks/87772580
+    "oil10.jpg", //https://www.pixiv.net/artworks/88081516
+    "oil11.jpg", //https://www.pixiv.net/artworks/80520328
+    "oil12.jpg", //https://www.pixiv.net/artworks/73573157
+    "oil13.jpg", //https://www.pixiv.net/artworks/71123408
+    "oil1.jpeg", //https://www.pixiv.net/artworks/85978281
+    "oil1.png", //https://www.pixiv.net/artworks/72972311
+    "oil2.png", //https://www.pixiv.net/artworks/75778049
+    "oil3.png" //https://www.pixiv.net/artworks/76435086
 ];
-//use "random" to get a random AI
+let stop = false;
 class Board {
     constructor() {
         this.game = new Game();
         this.undoTimes = 2;
         document.querySelector(".big").addEventListener("click", e => {
-            var target = e.target;
-            if (target.matches(".Oavl") || target.matches(".Xavl"))
-                this.move(target);
+            if (!stop) {
+                var target = e.target;
+                if (target.matches(".Oavl") || target.matches(".Xavl"))
+                    this.move(target);
+            }
         });
         for (let [i, small] of[...document.querySelectorAll(".small")].entries()) {
             small.classList.add("s" + i);
@@ -88,6 +104,7 @@ class Board {
         document.querySelector("#history").appendChild(node);
     }
 }
+
 let board = new Board();
 let p1 = new Player(Player1);
 let p2 = new Player(Player2);
@@ -96,17 +113,25 @@ bg.style.backgroundImage = `url(images/${img[Math.floor(Math.random() * img.leng
 
 function p1Check() {
     if (!board.game.finish && board.game.cur_player === 1) {
-        let idx = p1.best_move(board.game, dep);
-        let target = document.querySelector(".g" + idx.join(""));
-        board.move(target);
+        stop = true;
+        setTimeout(function() {
+            let idx = p1.best_move(board.game, dep);
+            let target = document.querySelector(".g" + idx.join(""));
+            board.move(target);
+            stop = false;
+        }, 2000);
     }
 }
 
 function p2Check() {
     if (!board.game.finish && board.game.cur_player === -1) {
-        let idx = p2.best_move(board.game, dep);
-        let target = document.querySelector(".g" + idx.join(""));
-        board.move(target);
+        stop = true;
+        setTimeout(function() {
+            let idx = p2.best_move(board.game, dep);
+            let target = document.querySelector(".g" + idx.join(""));
+            board.move(target);
+            stop = false;
+        }, 2000);
     }
 }
 
