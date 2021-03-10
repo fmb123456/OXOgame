@@ -29,7 +29,6 @@ class Table {
         var res = this.winner !== 0;
         this.state[idx] = 0;
         this.winner = 0;
-        this.finish = false;
         return res;
     }
     get finish() {
