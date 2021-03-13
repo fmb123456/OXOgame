@@ -114,7 +114,7 @@ let bg = document.querySelector(".bg");
 bg.style.backgroundImage = `url(images/${img[Math.floor(Math.random() * img.length)]})`;
 
 function p1Check() {
-    if (!board.game.finish && board.game.curPlayer === 1) {
+    if (!stop && !board.game.finish && board.game.curPlayer === 1) {
         stop = true;
         setTimeout(function() {
             if (board.game.big.state.filter(i => i !== 0).length >= 3 || board.game.history.length >= 40) dep = EXTRADEP;
@@ -128,7 +128,7 @@ function p1Check() {
 }
 
 function p2Check() {
-    if (!board.game.finish && board.game.curPlayer === -1) {
+    if (!stop && !board.game.finish && board.game.curPlayer === -1) {
         stop = true;
         setTimeout(function() {
             if (board.game.big.state.filter(i => i !== 0).length >= 3 || board.game.history.length >= 40) dep = EXTRADEP;
